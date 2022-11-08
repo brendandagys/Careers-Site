@@ -10,9 +10,9 @@ describe("Subnav", () => {
           name: routeName,
         },
       },
-    },
-    stubs: {
-      FontAwesomeIcon: true,
+      stubs: {
+        FontAwesomeIcon: true,
+      },
     },
   });
 
