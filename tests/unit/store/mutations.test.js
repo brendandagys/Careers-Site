@@ -30,4 +30,15 @@ describe("Mutations", () => {
       });
     });
   });
+
+  describe("ADD_SELECTED_JOB_TYPES", () => {
+    it("Updates job types that the user has chosen to filter jobs by", () => {
+      const state = { selectedJobTypes: [] };
+      mutations.ADD_SELECTED_JOB_TYPES(state, ["Full-time", "Part-time"]);
+
+      expect(state).toEqual({
+        selectedJobTypes: ["Full-time", "Part-time"],
+      });
+    });
+  });
 });

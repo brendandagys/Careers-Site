@@ -21,7 +21,7 @@ describe("Subnav", () => {
     it("Displays job count", () => {
       const routeName = "JobResults";
       const $store = {
-        getters: { FILTERED_JOBS_BY_ORGANIZATIONS: [{ id: 1 }, { id: 2 }] },
+        getters: { FILTERED_JOBS: [{ id: 1 }, { id: 2 }] },
       };
       const wrapper = mount(Subnav, createConfig(routeName, $store));
       const jobCount = wrapper.find("[data-test='job-count']");
