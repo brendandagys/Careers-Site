@@ -7,10 +7,10 @@ import {
   faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 
-import App from "./App.vue";
+import App from "@/App.vue";
 import "@/assets/tailwind.css";
 import router from "@/router";
-import store from "./store";
+import store from "@/store";
 
 library.add(faAngleDown);
 library.add(faAngleUp);

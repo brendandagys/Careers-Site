@@ -11,9 +11,7 @@ describe("JobListings", () => {
   });
 
   const createStore = (config = {}) => ({
-    state: {
-      jobs: Array(15).fill({}),
-    },
+    getters: { FILTERED_JOBS_BY_ORGANIZATIONS: [] },
     dispatch: jest.fn(),
     ...config,
   });
@@ -44,7 +42,9 @@ describe("JobListings", () => {
     const $route = createRoute(queryParams);
     const numJobsInStore = 15;
     const $store = createStore({
-      state: { jobs: Array(numJobsInStore).fill({}) }, // Be explicit for future developers
+      getters: {
+        FILTERED_JOBS_BY_ORGANIZATIONS: Array(numJobsInStore).fill({}),
+      },
     });
     const wrapper = shallowMount(JobListings, createConfig($route, $store));
     await flushPromises();
@@ -88,7 +88,9 @@ describe("JobListings", () => {
       const queryParams = { page: "1" };
       const $route = createRoute(queryParams);
       const $store = createStore({
-        state: { jobs: Array(15).fill({}) },
+        getters: {
+          FILTERED_JOBS_BY_ORGANIZATIONS: Array(15).fill({}),
+        },
       });
       const wrapper = shallowMount(JobListings, createConfig($route, $store));
       await flushPromises();
@@ -102,7 +104,9 @@ describe("JobListings", () => {
       const queryParams = { page: "2" };
       const $route = createRoute(queryParams);
       const $store = createStore({
-        state: { jobs: Array(15).fill({}) },
+        getters: {
+          FILTERED_JOBS_BY_ORGANIZATIONS: Array(15).fill({}),
+        },
       });
       const wrapper = shallowMount(JobListings, createConfig($route, $store));
       await flushPromises();
@@ -114,7 +118,9 @@ describe("JobListings", () => {
       const queryParams = { page: "2" };
       const $route = createRoute(queryParams);
       const $store = createStore({
-        state: { jobs: Array(15).fill({}) },
+        getters: {
+          FILTERED_JOBS_BY_ORGANIZATIONS: Array(15).fill({}),
+        },
       });
       const wrapper = shallowMount(JobListings, createConfig($route, $store));
       await flushPromises();
