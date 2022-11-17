@@ -4,7 +4,7 @@
       <fieldset>
         <ul class="flex flex-row flex-wrap">
           <li
-            v-for="jobType in UNIQUE_JOB_TYPES"
+            v-for="jobType in uniqueJobTypes"
             :key="jobType"
             class="w-1/2 h-8"
           >
@@ -26,9 +26,12 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
-import { ADD_SELECTED_JOB_TYPES, UNIQUE_JOB_TYPES } from "@/store/constants";
+import { useUniqueJobTypes } from "@/store/composables";
+import { ADD_SELECTED_JOB_TYPES } from "@/store/constants";
 
 import Accordion from "@/components/shared/Accordion.vue";
 
@@ -37,20 +40,19 @@ export default {
   components: {
     Accordion,
   },
-  data() {
-    return {
-      selectedJobTypes: [],
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const selectedJobTypes = ref([]);
+    const uniqueJobTypes = useUniqueJobTypes();
+
+    const selectJobType = () => {
+      store.commit(ADD_SELECTED_JOB_TYPES, selectedJobTypes.value);
+      router.push({ name: "JobResults" });
     };
-  },
-  computed: {
-    ...mapGetters([UNIQUE_JOB_TYPES]),
-  },
-  methods: {
-    ...mapMutations([ADD_SELECTED_JOB_TYPES]),
-    selectJobType() {
-      this.ADD_SELECTED_JOB_TYPES(this.selectedJobTypes);
-      this.$router.push({ name: "JobResults" });
-    },
+
+    return { selectedJobTypes, selectJobType, uniqueJobTypes };
   },
 };
 </script>
