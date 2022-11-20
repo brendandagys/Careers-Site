@@ -4,7 +4,7 @@ describe("nextElementInList", () => {
   it("Locates element in list and returns the next element in the list", () => {
     const list = ["A", "B", "C", "D", "E"];
     const value = "C";
-    const result = nextElementInList(list, value);
+    const result = nextElementInList<string>(list, value); // Being explicit with the generic type
     expect(result).toBe("D");
   });
 
@@ -12,7 +12,7 @@ describe("nextElementInList", () => {
     it("Locates next element at the start of the list", () => {
       const list = ["A", "B", "C", "D", "E"];
       const value = "E";
-      const result = nextElementInList(list, value);
+      const result = nextElementInList<string>(list, value); // Being explicit with the generic type
       expect(result).toBe("A");
     });
   });

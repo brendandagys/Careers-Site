@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import Accordion from "@/components/shared/Accordion";
+import Accordion from "@/components/shared/Accordion.vue";
 
 describe("Accordion", () => {
   const createConfig = (config = {}) => ({

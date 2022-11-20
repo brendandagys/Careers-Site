@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import HeaderContainer from "@/components/shared/HeaderContainer";
+import HeaderContainer from "@/components/shared/HeaderContainer.vue";
 
 describe("HeaderContainer", () => {
   it("Allows parent component to provide title content", () => {

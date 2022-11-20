@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 
-import TextInput from "@/components/shared/TextInput";
+import TextInput from "@/components/shared/TextInput.vue";
 
 describe("TextInput", () => {
   it("Communicates that the user has entered a character", () => {
@@ -15,7 +15,6 @@ describe("TextInput", () => {
     input.setValue("B");
     input.setValue("Br");
     input.setValue("Bre");
-    // console.log(wrapper.emitted());
 
     const messages = wrapper.emitted()["update:modelValue"];
 

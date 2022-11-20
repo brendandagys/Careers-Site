@@ -37,15 +37,16 @@
   </main>
 </template>
 
-<script>
-import { computed, onMounted } from "vue";
+<script lang="ts">
+import { computed, defineComponent, onMounted } from "vue";
 
 import useCurrentPage from "@/composables/useCurrentPage";
 import usePreviousAndNextPages from "@/composables/usePreviousAndNextPages";
 import { useFetchJobsDispatch, useFilteredJobs } from "@/store/composables";
 import JobListing from "@/components/job-results/JobListing.vue";
+import { Job } from "@/api/types";
 
-export default {
+export default defineComponent({
   name: "JobListings",
   components: {
     JobListing,
@@ -61,10 +62,10 @@ export default {
 
     const { previousPage, nextPage } = usePreviousAndNextPages(
       currentPage,
-      maxPage.value
+      maxPage
     );
 
-    const displayedJobs = computed(() => {
+    const displayedJobs = computed<Job[]>(() => {
       const pageNumber = currentPage.value;
       const firstJobIndex = (pageNumber - 1) * 10;
       const lastJobIndex = pageNumber * 10;
@@ -73,5 +74,5 @@ export default {
 
     return { currentPage, displayedJobs, nextPage, previousPage };
   },
-};
+});
 </script>
