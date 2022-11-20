@@ -5,17 +5,20 @@ import {
   ADD_SELECTED_JOB_TYPES,
 } from "@/store/constants";
 
+import { GlobalState } from "@/store/types";
+import { Job } from "@/api/types";
+
 const mutations = {
-  [LOGIN_USER](state) {
+  [LOGIN_USER](state: GlobalState) {
     state.isLoggedIn = true;
   },
-  [RECEIVE_JOBS](state, jobs) {
+  [RECEIVE_JOBS](state: GlobalState, jobs: Job[]) {
     state.jobs = jobs;
   },
-  [ADD_SELECTED_ORGANIZATIONS](state, newOrganizations) {
+  [ADD_SELECTED_ORGANIZATIONS](state: GlobalState, newOrganizations: string[]) {
     state.selectedOrganizations = newOrganizations;
   },
-  [ADD_SELECTED_JOB_TYPES](state, newJobTypes) {
+  [ADD_SELECTED_JOB_TYPES](state: GlobalState, newJobTypes: string[]) {
     state.selectedJobTypes = newJobTypes;
   },
 };
